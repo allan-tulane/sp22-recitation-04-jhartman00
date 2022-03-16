@@ -1,7 +1,7 @@
 # CMPS 2200  Recitation 04
 
 **Name (Team Member 1):**Jamie Hartman  
-**Name (Team Member 2):**_________________________
+**Name (Team Member 2):**Charles Tyndel
 
 
 In this lab you will practice using the `map` and `reduce` functions. These functions are commonly used together in a `map-reduce` framework, used by Google and others to parallelize and scale common computations.
@@ -35,11 +35,13 @@ To use this function to count words, you'll need to implement your own `map_f` a
 3. If the above are correct, then you should now be able to test it the full solution `test_word_count`
 
 4. Assume that a word `w` appears `n` times. What is the **work** and **span** of `word_count_reduce` for this word, assuming a parallel implementation of the `reduce` function?
-
-**Enter answer here**
+   * Assuming w appears n times, and there is a parallel implementation of the reduce function, we can infer that
+     *  W(n) = 2*W(n/2) + 1 => O(n)
+     *  S(n) = S(n/2) + 1 => O(lg n)
 
 
 5. Why are we going through all this trouble? Couldn't I just use this function to count words?
+  * Because of the nested loop in the function, the work of this function would be O(n^2) rather than just O(n) of reduce, making this function much less efficient.
 
 ```python
 docs = ['i am sam i am', 'sam is ham']
@@ -52,7 +54,8 @@ for doc in docs:
 
 What is the problem that prevents us from easily parallelizing this solution?
 
-**Enter answer here**
+  * The problem stems from the fact that we are adding 1 onto the key within both loops and the if. If the key was placed outside the loop, then it could be parallelized, but since it being changed within, it cannot be simultaneously changed within another function.
+
 
 
 ## Part 2: Sentiment analysis
