@@ -1,7 +1,7 @@
 # CMPS 2200  Recitation 04
 
 **Name (Team Member 1):**Jamie Hartman  
-**Name (Team Member 2):**Charles Tyndel
+**Name (Team Member 2):**Charles Tyndal
 
 
 In this lab you will practice using the `map` and `reduce` functions. These functions are commonly used together in a `map-reduce` framework, used by Google and others to parallelize and scale common computations.
